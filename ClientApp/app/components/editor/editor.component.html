@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Editeur de parcours</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid container-editor">
+    <div class="row">
+        <div class="col-md-2 volet">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="course.name">
+            </div>
+            <div class="form-group">
+                <strong>Par {{course.par}}</strong>
+            </div>
+            <ul class="list-unstyled">
+                <li *ngFor="let hole of course.holes" 
+                    (click)="currentHole=hole"
+                    [ngClass]="{'selected': currentHole == hole}">
+                    {{hole.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <table *ngIf="currentHole">
+                <tr *ngFor="let segmentTab of currentHole.segments">
+                    <td *ngFor="let segment of segmentTab" class="seg">
+                        <img *ngIf="segment.name" 
+                            [ngStyle]="{'transform': getCSSRotation(segment)}"
+                            src="/models/{{segment.name}}.png">
+                        <div class="btns">
+                            <button (click)="removeSeg(segment)"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button (click)="rotateSeg(segment)"><i class="glyphicon glyphicon-repeat"></i></button>
+                            <button (click)="changeSeg(segment)"><i class="glyphicon glyphicon-plus"></i></button>
+                            <button (click)="setStart(segment)"><i class="glyphicon glyphicon-map-marker"></i></button>
+                        </div>
+                        <div class="flags">
+                            <i *ngIf="segment.isStart" class="glyphicon glyphicon-map-marker"></i>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Json</h3>
+        <div class="form-group">
+            <textarea class="form-control">{{course | json}}</textarea>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Charger</h3>
+        <div class="form-group">
+            <textarea class="form-control" [(ngModel)]="courseToLoad"></textarea>
+        </div>
+        <button class="btn btn-primary" (click)="loadCourse()">Charger le parcours</button>
+    </div>
+</div>
+
+
+<div class="seg-selector" *ngIf="isSegSelection">
+    <img *ngFor="let name of availableSegments" 
+        (click)="selectSeg(name)"
+        [src]="'/models/'+name+'.png'">
+</div>
+

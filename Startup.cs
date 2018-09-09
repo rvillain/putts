@@ -53,6 +53,8 @@ namespace putts_app
             provider.Mappings[".mtl"] = "application/x-msdownload";
             provider.Mappings[".gltf"] = "application/x-msdownload";
             provider.Mappings[".bin"] = "application/x-msdownload";
+            provider.Mappings[".dae"] = "application/x-msdownload";
+            provider.Mappings[".glb"] = "application/x-msdownload";
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(

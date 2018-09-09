@@ -1,0 +1,77 @@
+table{
+}
+td{
+    transition: 0.3s all;
+    width: 100px;
+    height: 100px;
+    background: rgba(0,0,0,0.1);
+}
+td:hover{
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.seg{
+    position: relative;
+}
+.seg img{
+    width: 100px;
+    height: 100px;
+}
+
+.seg .btns{
+    display: none;
+    transition: 0.3s all;
+    background: white;
+    color: black;
+    border: none;
+    width: 30px;
+}
+
+.seg:hover .btns{
+    display: block;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    opacity: 0.7;
+}
+
+.seg .flags{
+    color: white;
+    position: absolute;
+    left:1px;
+    bottom: 1px;
+}
+
+.container-editor{
+   padding-top: 70px;
+}
+
+.seg-selector{
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    top:50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+}
+.seg-selector img{
+    cursor: pointer;
+    width: 100px;
+    margin: 5px;
+}
+
+.volet{
+    border-right: 1px solid #CCC;
+}
+.volet li{
+    transition: 0.3s all;
+    padding: 5px;
+    margin: 3px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.volet li.selected{
+    background: #335577;
+    color: white;
+}

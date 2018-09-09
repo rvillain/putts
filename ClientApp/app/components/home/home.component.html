@@ -1,43 +1,50 @@
-<a-scene>
+<a-scene light="defaultLightsEnabled: false" physics="friction: 0.1; restitution: 0">
     <a-assets>
-      <a-asset-item id="putter" src="/models/putter.obj" ></a-asset-item>
-      <a-asset-item id="golf-putter" src="/models/golf_putter.obj" ></a-asset-item>
-      <a-asset-item id="putter-material" src="/models/putter.mtl"></a-asset-item>
-
+      <!-- <a-asset-item id="ball" src="/models/ball.gltf"></a-asset-item> -->
+      <a-asset-item id="Ball_blue" src="/models/Ball_blue_01.glb"></a-asset-item>
+      <a-asset-item id="Ball_green" src="/models/Ball_green_01.glb"></a-asset-item>
+      <a-asset-item id="Ball_red" src="/models/Ball_red_01.glb"></a-asset-item>
       
-      <a-asset-item id="t1" src="/models/t1.obj" ></a-asset-item>
-      <a-asset-item id="t1-material" src="/models/t1.mtl"></a-asset-item>
+      <a-asset-item id="Club_blue" src="/models/Club_blue_01.glb"></a-asset-item>
+      <a-asset-item id="Club_green" src="/models/Club_green_01.glb"></a-asset-item>
+      <a-asset-item id="Club_red" src="/models/Club_red_01.glb"></a-asset-item>
 
-      <a-asset-item id="ball" src="/models/ball.gltf"></a-asset-item>
-
-      <img id="ground" src="/models/tex/green.jpg">
+      <a-asset-item id="Bump" src="/models/Bump_01.glb"></a-asset-item>
+      <a-asset-item id="Bump_down" src="/models/Bump_down_01.glb"></a-asset-item>
+      <a-asset-item id="Bump_down_walls" src="/models/Bump_down_walls_01.glb"></a-asset-item>
+      <a-asset-item id="Bump_walls" src="/models/Bump_walls_01.glb"></a-asset-item>
+      <a-asset-item id="Gap" src="/models/Gap_01.glb"></a-asset-item>
+      <a-asset-item id="Hill_square" src="/models/Hill_square_01.glb"></a-asset-item>
+      <a-asset-item id="Hole_open" src="/models/Hole_open_01.glb"></a-asset-item>
+      <a-asset-item id="Narrow_round" src="/models/Narrow_round_01.glb"></a-asset-item>
+      <a-asset-item id="Narrow_square" src="/models/Narrow_square_01.glb"></a-asset-item>
+      <a-asset-item id="Obstacle_block" src="/models/Obstacle_block_01.glb"></a-asset-item>
+      <a-asset-item id="Obstacle_diamond" src="/models/Obstacle_diamond_01.glb"></a-asset-item>
+      <a-asset-item id="Obstacle_triangle" src="/models/Obstacle_triangle_01.glb"></a-asset-item>
+      <a-asset-item id="Open" src="/models/Open_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_1" src="/models/Ramp_1_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_2" src="/models/Ramp_2_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_3" src="/models/Ramp_3_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_4" src="/models/Ramp_4_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_sharp" src="/models/Ramp_sharp_01.glb"></a-asset-item>
+      <a-asset-item id="Ramp_square" src="/models/Ramp_square_01.glb"></a-asset-item>
+      <a-asset-item id="Round_corner_1" src="/models/Round_corner_1_01.glb"></a-asset-item>
+      <a-asset-item id="Round_corner_3" src="/models/Round_corner_3_01.glb"></a-asset-item>
+      <a-asset-item id="Side" src="/models/Side_01.glb"></a-asset-item>
+      <a-asset-item id="Split" src="/models/Split_01.glb"></a-asset-item>
+      <a-asset-item id="Split_start" src="/models/Split_start_01.glb"></a-asset-item>
+      <a-asset-item id="Split_walls_to_open" src="/models/Split_walls_to_open_01.glb"></a-asset-item>
+      <a-asset-item id="Straight" src="/models/Straight_01.glb"></a-asset-item>
+      <a-asset-item id="T_split" src="/models/T_split_01.glb"></a-asset-item>
+      <a-asset-item id="Walls_to_open" src="/models/Walls_to_open_01.glb"></a-asset-item>
     </a-assets>
     <a-sky color="#7EC0EE"></a-sky>
-    <a-entity light="type: ambient"></a-entity>
 
     <!-- Textured plane parallel to ground. -->
-    <a-plane static-body src="#ground" height="200" width="200" rotation="-90 0 0" repeat="100 100"></a-plane>
-
-    <!-- <a-ocean color="aqua" depth="100" width="100"></a-ocean> -->
-
-    <a-obj-model src="#t1" 
-          rotation="-90 0 180"
-          position="0.3 0 -3" 
-          static-body="shape: box;"
-          scale="0.05 0.05 0.05"></a-obj-model>
-
-    <a-obj-model src="#putter"
-      position="4.6 0.8 -2.5" 
-      scale="0.001 0.001 0.001" 
-      dynamic-body="shape: box; mass: 20;"
-      ></a-obj-model>
-
-      <a-obj-model src="#golf-putter" 
-      position="5 1 -2.5" 
-      scale="1 1 1" 
-      dynamic-body="shape: box; mass: 20;"></a-obj-model>
+    <a-plane static-body height="200" width="200" rotation="-90 0 0" repeat="100 100"></a-plane>
 
     <a-entity id="container"></a-entity>
+    <a-entity id="course-container"></a-entity>
 
     <!-- <a-entity id="player"
       camera="userHeight: 1.6"
@@ -47,10 +54,26 @@
     </a-entity> -->
     <a-text id="score" position="0 5 -2" value=""></a-text>
 
-    <a-entity camera look-controls position="0 4 4"></a-entity>
+    <!-- <a-entity camera look-controls position="0 4 4"></a-entity> -->
 
-    <a-entity id="leftHand" hand-controls="left"></a-entity>
-    <a-entity id="rightHand" hand-controls="right"></a-entity>
+    <a-entity>
+      <a-camera position="0 5 10"></a-camera>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="left"></a-entity>
+      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="right"></a-entity>
+    </a-entity>
+
+    <a-gltf-model src="#Club_blue" grabbable
+                                        position="5.5 2.5 8" 
+                                        scale="1 1 1"
+                                        rotation ="0 90 -90" 
+                                        dynamic-body="shape: box; mass: 10"></a-gltf-model>
+    
+    <a-plane static-body height="3" width="3" rotation="-90 0 0" position="6 2 9.4" color="#005599"></a-plane>
+
+    <!-- <a-entity vive-controls="hand: left"></a-entity>
+    <a-entity vive-controls="hand: right"></a-entity> -->
     <!-- <a-entity putter-controls hand="right"></a-entity> -->
+
+    <a-light type="spot" color="#FFFFFF" angle="180" position="0 100 0"></a-light>
   </a-scene>
   
