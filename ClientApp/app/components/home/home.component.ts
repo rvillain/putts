@@ -81,10 +81,10 @@ export class HomeComponent implements OnInit {
                                     let segZ = z + i*3;
                                     let segOrientation = 0;
                                     if(seg.isStart){
-                                        this.ballContainer.innerHTML += `<a-gltf-model src="#Ball_blue" 
+                                        this.ballContainer.innerHTML += `<a-sphere color="yellow" radius="1"
+                                        draggable droppable grabbable
                                         position="${segX+1.5} ${y+5} ${segZ-1.5}" 
-                                        scale="1 1 1"
-                                        dynamic-body="shape: box; mass: 0.5;"></a-gltf-model>`
+                                        dynamic-body="shape: box; mass: 0.5;"></a-sphere>`
                                     }
                                     switch(seg.orientation){
                                         case 0:
