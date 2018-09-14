@@ -1,4 +1,5 @@
-<a-scene light="defaultLightsEnabled: false" physics="friction: 0.1; restitution: 0">
+<a-scene light="defaultLightsEnabled: false"
+physics="driver: worker; frictionEquationStiffness:1e2; ">
     <a-assets>
       <!-- <a-asset-item id="ball" src="/models/ball.gltf"></a-asset-item> -->
       <a-asset-item id="Ball_blue" src="/models/Ball_blue_01.glb"></a-asset-item>
@@ -38,16 +39,29 @@
       <a-asset-item id="T_split" src="/models/T_split_01.glb"></a-asset-item>
       <a-asset-item id="Walls_to_open" src="/models/Walls_to_open_01.glb"></a-asset-item>
 
-      <a-mixin id="cube" dynamic-body grabbable
-          geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"></a-mixin>
+      <a-mixin id="cube" dynamic-body grabbable geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"></a-mixin>
     </a-assets>
-    <a-sky color="#7EC0EE"></a-sky>
+    <a-sky src="/img/sky.png"></a-sky>
 
     <!-- Textured plane parallel to ground. -->
-    <a-plane static-body height="200" width="200" rotation="-90 0 0" repeat="100 100"></a-plane>
+    <a-plane static-body height="200" width="200" rotation="-90 0 0"></a-plane>
+    <!-- <a-box static-body height="200" width="200" depth="0.001" rotation="-90 0 0"></a-box> -->
 
     <a-entity id="container"></a-entity>
     <a-entity id="course-container"></a-entity>
+
+    <!-- <a-entity id="pieces-container" position="0 2 0">
+      <a-entity mixin="ze"></a-entity>
+      <a-entity static-body>
+        <a-plane height="1" width="1" rotation="-90 0 0" color="#88DD66"> </a-plane>
+      </a-entity>
+
+      <a-entity static-body>
+        <a-plane height="1" width="1" rotation="-90 0 0" color="#88DD66"> </a-plane>
+        <a-box height="1" width="0.1" depth="0.1" rotation="-90 0 0" position="-0.45 0 0"></a-box>
+      </a-entity>
+
+    </a-entity> -->
 
     <!-- <a-entity id="player"
       camera="userHeight: 1.6"
@@ -61,38 +75,42 @@
 
     <a-entity id="cameraRig">
       <a-camera id="head" position="0 5 10"></a-camera>
-      <a-entity sphere-collider="objects: a-box" grab super-hands hand-controls="left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"
-        physics-collider
-        static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
-      <a-entity sphere-collider="objects: a-box" grab super-hands hand-controls="right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"
-        physics-collider
-        static-body="shape: sphere; sphereRadius: 0.02"></a-entity>
+      <a-entity super-hands hand-controls="left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+    
+      </a-entity>
+      <a-entity super-hands hand-controls="right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+          <a-entity id="club" position="-0.1 0.029 0.270" rotation="-90 180 0" scale="0.3 0.3 0.3">
+              <a-gltf-model src="#Club_blue" 
+                scale="1 1 1"
+                rotation ="0 90 -90">
+              </a-gltf-model>
+              <a-box width="0.1" height="0.2" depth="0.55"
+                rotation="13 90 0"
+                position="-0.24 -3.18 -0.04"
+                static-body="mass: 1000; linearDamping: 0.7"></a-box>
+          </a-entity>
+        </a-entity>
     </a-entity>
 
-    <a-gltf-model src="#Club_blue" 
-                  hoverable
-                  grabbable
-                  draggable 
-                  dropppable
-                  position="5.5 2.5 8" 
-                  scale="1 1 1"
-                  rotation ="0 90 -90" ></a-gltf-model>
+    
     
     <a-plane static-body height="3" width="3" rotation="-90 0 0" position="6 2 9.4" color="#005599"></a-plane>
 
-    <!-- <a-entity vive-controls="hand: left"></a-entity>
+    <!-- <a-entity vive-controls="hand: left"></a-entity>zz
     <a-entity vive-controls="hand: right"></a-entity> -->
     <!-- <a-entity putter-controls hand="right"></a-entity> -->
 
-    <a-light type="spot" color="#FFFFFF" angle="180" position="0 100 0"></a-light>
+    <a-light type="ambient" color="#FFFFFF" angle="0" position="0 100 0" intensity="0.2"></a-light>
 
-    <a-box hoverable 
-      grabbable stretchable draggable dropppable 
-      color="blue" 
-      position="0 5 -1"></a-box>
-
-      <a-entity mixin="cube" position="0 1.6 -1" material="color: red" sleepy
-        collision-filter="group: red; collidesWith: default, hands, blue">
+    <a-entity position="-0.02 10.168 -0.68" dynamic-body="mass: 0.1; angularDamping: 0.7">
+        <a-sphere color="yellow" radius="0.03"></a-sphere>
+        <a-light type="point" color="#FFFFFF" angle="180" position="0 0.05 0" intensity="0.05"></a-light>
+        <a-light type="point" color="#FFFFFF" angle="180" position="0 -0.05 0" intensity="0.05"></a-light>
+        <a-light type="point" color="#FFFFFF" angle="180" position="0.05 0 0" intensity="0.05"></a-light>
+        <a-light type="point" color="#FFFFFF" angle="180" position="-0.05 0 0" intensity="0.05"></a-light>
+        <a-light type="point" color="#FFFFFF" angle="180" position="0 0 0.05" intensity="0.05"></a-light>
+        <a-light type="point" color="#FFFFFF" angle="180" position="0 0 -0.05" intensity="0.05"></a-light>
     </a-entity>
+    
   </a-scene>
   

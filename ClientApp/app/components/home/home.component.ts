@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         this.ballContainer = document.querySelector("#container");
         this.courseContainer = document.querySelector("#course-container");
         this.colors = ["red", "orange", "yellow", "green", "blue", "purple", "hotpink"];
-        this.loadCourse();
+        //this.loadCourse();
     }
 
     startGame(){
