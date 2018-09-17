@@ -1,11 +1,7 @@
 <a-scene light="defaultLightsEnabled: false"
-physics="driver: worker; frictionEquationStiffness:1e2; ">
+physics="driver: worker;" stats>
     <a-assets>
       <!-- <a-asset-item id="ball" src="/models/ball.gltf"></a-asset-item> -->
-      <a-asset-item id="Ball_blue" src="/models/Ball_blue_01.glb"></a-asset-item>
-      <a-asset-item id="Ball_green" src="/models/Ball_green_01.glb"></a-asset-item>
-      <a-asset-item id="Ball_red" src="/models/Ball_red_01.glb"></a-asset-item>
-      
       <a-asset-item id="Club_blue" src="/models/Club_blue_01.glb"></a-asset-item>
       <a-asset-item id="Club_green" src="/models/Club_green_01.glb"></a-asset-item>
       <a-asset-item id="Club_red" src="/models/Club_red_01.glb"></a-asset-item>
@@ -92,25 +88,34 @@ physics="driver: worker; frictionEquationStiffness:1e2; ">
         </a-entity>
     </a-entity>
 
-    
-    
-    <a-plane static-body height="3" width="3" rotation="-90 0 0" position="6 2 9.4" color="#005599"></a-plane>
-
     <!-- <a-entity vive-controls="hand: left"></a-entity>zz
     <a-entity vive-controls="hand: right"></a-entity> -->
     <!-- <a-entity putter-controls hand="right"></a-entity> -->
 
     <a-light type="ambient" color="#FFFFFF" angle="0" position="0 100 0" intensity="0.2"></a-light>
+    <a-light type="spot" color="#FFFFFF" angle="180" position="0 4 0" intensity="0.5"></a-light>
 
-    <a-entity position="-0.02 10.168 -0.68" dynamic-body="mass: 0.1; angularDamping: 0.7">
+    <a-entity position="-0.02 10.168 -0.68" dynamic-body="mass: 0.1; angularDamping: 0.7" physics-collider id="test">
         <a-sphere color="yellow" radius="0.03"></a-sphere>
-        <a-light type="point" color="#FFFFFF" angle="180" position="0 0.05 0" intensity="0.05"></a-light>
-        <a-light type="point" color="#FFFFFF" angle="180" position="0 -0.05 0" intensity="0.05"></a-light>
-        <a-light type="point" color="#FFFFFF" angle="180" position="0.05 0 0" intensity="0.05"></a-light>
-        <a-light type="point" color="#FFFFFF" angle="180" position="-0.05 0 0" intensity="0.05"></a-light>
-        <a-light type="point" color="#FFFFFF" angle="180" position="0 0 0.05" intensity="0.05"></a-light>
-        <a-light type="point" color="#FFFFFF" angle="180" position="0 0 -0.05" intensity="0.05"></a-light>
     </a-entity>
-    
+   
   </a-scene>
+
+  <div class="impulse">
+    <div>
+        &nbsp;&nbsp;
+        &nbsp;
+        <button class="btn btn-primary "  (click)="impulse(1)"><i class="glyphicon glyphicon-arrow-up"></i></button>
+    </div>
+    <div>
+        <button class="btn btn-primary " (click)="impulse(0)"><i class="glyphicon glyphicon-arrow-left"></i></button><button class="btn btn-primary " (click)="impulse(2)"><i class="glyphicon glyphicon-arrow-right"></i></button>
+    </div>
+    <div>
+        &nbsp;&nbsp;
+        &nbsp;
+        <button class="btn btn-primary " (click)="impulse(3)"><i class="glyphicon glyphicon-arrow-down"></i></button>
+    </div>
+    
+  </div>
+  
   
